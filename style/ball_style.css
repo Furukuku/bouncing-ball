@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+  display: flex;
+  justify-content: center;
+  height: 50vh;
+  font-size: 75px;
+  perspective: 10em;
+  perspective-origin: 50% calc(50% -  .5em);
+}
+
+.scene {
+  position: relative;
+  top: 50%;
+  bottom: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform-style: preserve-3d;
+  /* animation: sceneRotate 30s infinite linear; */
+}
+
+/* @keyframes sceneRotate {
+  to {
+    transform: rotateY(360deg);
+  }
+} */
+
+.ball {
+  background: radial-gradient(circle at top, rgb(255, 52, 52), 50%,rgb(58, 1, 1));
+  height: 1.2em;
+  width: 1.2em;
+  border-radius: 50%;
+  position: absolute;
+  animation: 
+    bounce 1s infinite;
+    /* sceneRotate 30s infinite linear reverse; */
+}
+
+.floor {
+  width: 15em;
+  height: 15em;
+  background-image: 
+    radial-gradient(#0000, #000 50%),
+    repeating-conic-gradient(from 45deg, #111 0 90deg, #222 90deg 180deg);
+  background-size: 100%, 40px 40px;
+  position: absolute;
+  top: -4.67em;
+  transform: 
+    rotateX(90deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shadow {
+  width: 30px;
+  height: 30px;
+  background-color: rgb(0, 0, 0, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px rgb(0, 0, 0, 0.5);
+  animation: shad 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    animation-timing-function: ease-out;
+  }
+  50% {
+    transform: translateY(-180px);
+    animation-timing-function: ease-in;
+  }
+}
+
+@keyframes shad {
+  0%, 100% {
+    box-shadow: 0 0 0 30px rgb(0, 0, 0, 0.5);
+    animation-timing-function: ease-out;
+  }
+  50% {
+    box-shadow: 0 0 0 2px rgb(0, 0, 0, 0.5);
+    animation-timing-function: ease-in;
+  }
+}
